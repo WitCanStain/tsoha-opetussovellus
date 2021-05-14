@@ -1,0 +1,21 @@
+{% if session.error %}
+<p>Salasanat eivät täsmää! Yritä uudelleen.</p>
+{% elif session.registered %}
+<p>Onneksi olkoon, sinut on rekisteröity! Käyttäjätunnuksesi on {{ session.username }}</p>
+{% else %}
+<p> Ole hyvä ja rekisteröidy:</p>
+<form action="/register" method="POST">
+<label for="role">Käyttäjätyyppi</label>
+<select name="role" id="role">
+    <option value="opettaja">Opettaja</option>
+    <option value="oppilas">Oppilas</option>
+</select>
+<p>Käyttäjätunnus:</p>
+<input type="text" name="username"></p>
+<p>Salasana:<br>
+<input type="password" name="password"></p>
+<p>Salasana uudelleen:</p>
+<input type="password" name="passwordconf"></p>
+<input type="submit" value="Rekisteröidy">
+</form>
+{% endif %}
