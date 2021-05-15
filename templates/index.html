@@ -1,6 +1,16 @@
-{% if session.user_id %}
+{% if session.role == 'oppilas' %}
 <p>Olet kirjautunut nimellä {{ session.username }}</p>
 <a href="/logout">Kirjaudu ulos</a>
+
+<p>Tässä on lista kursseistasi:</p>
+
+<ul>
+    {% for course in courses %}
+    <li> {{ course }}
+    {% endfor %}
+</ul>
+{% elif session.role == 'opettaja' %}
+<p>oot opettaja bro!</p>
 {% else %}
 <form action="/login" method="POST">
 <p>Tunnus:<br>

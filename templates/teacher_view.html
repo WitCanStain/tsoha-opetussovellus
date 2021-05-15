@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block page_content %}
+<p>Voit lisätä kurssin:</p>
+<p>{{ message }}</p>
+<form action="/addcourse" method="POST">
+    <p>Kurssin nimi:</p>
+    <input type="text" name="course_name"></p>
+    <p>Kurssin opettaja:</p>
+    <select name="opettaja" id="opettaja">
+        {% for teacher in teachers() %}
+        <option value={{teacher[2]}}>{{ teacher[0] + " " + teacher[1] }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Rekisteröidy">
+</form>
+
+<form action="/courses" method="POST">
+    <input type="submit" value="Kurssit" name="kurssit"/>
+</form>
+{% block view_content %}{% endblock %}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "teacher_view.html" %}
+{% block view_content %}
+<p>Tässä opettamasi kurssit:</p>
+
+    {% for course in courses %}
+    
+    <form action="/course" method="POST"><button type="submit" value={{course[1]}} name="course">{{ course[0] }}</button> </form>
+    <form action="/removecourse" method="POST"><button type="submit" value={{course[1]}} name="removecourse">Poista kurssi</button></form>
+    <p> ilmoittautuneita: {{ course[2] }}</p>
+    {% endfor %}
+
+
+{% endblock %}

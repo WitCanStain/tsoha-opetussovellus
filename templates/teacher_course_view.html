@@ -1,0 +1,22 @@
+{% extends "teacher_view.html" %}
+
+{% block view_content %}
+<p>Kurssi {{ session["current_course_name"] }}</p>
+<form action="/changecoursename" method="POST">
+    <button type="submit" value="changecoursename" name="changecoursename">Muuta kurssin nimeä.</button>
+    <input type="text" name="newcoursename"></p>
+    
+</form>
+{% if not participants %}
+<p>Tällä kurssilla ei ole tällä hetkellä ilmoittautuneita.</p>
+{% else %}
+{% for participant in participants %}
+<form action="/removestudent" method="POST">
+<p>{{ participant[0] + " " + participant[1] }} <button type="submit" value={{participant[2]}}:{{participant[3]}} name="remove">Poista kurssilta</button> </p>
+</form>
+{% endfor %}
+{% endif %}
+<form action="/addstudent" method="POST"> 
+<p>Lisää opiskelija: <input type="text" name="addstudent"></p><button type="submit" value="course" name="course">Lisää kurssille</button></p>
+</form>
+{% endblock %}

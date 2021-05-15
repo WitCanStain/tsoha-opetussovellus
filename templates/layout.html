@@ -1,0 +1,9 @@
+
+<title>Tsoha</title>
+{% block content %}
+{% for message in get_flashed_messages() %}
+{{ message }}
+{% endfor %}
+
+{% block page_content %}{% endblock %}
+{% endblock %}
